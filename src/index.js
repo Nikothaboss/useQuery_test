@@ -3,10 +3,17 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ThemeProvider } from './contexts/ThemeContext';
 
+const queryClient = new QueryClient();
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider>
+      <QueryClientProvider client={queryClient}>
+        <App />
+      </QueryClientProvider>
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
